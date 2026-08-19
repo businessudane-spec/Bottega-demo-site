@@ -1,0 +1,431 @@
+/* ==========================================================================
+   BOTTEGA DESIGN STUDIO - SCROLL ANIMATION STYLESHEET
+   ========================================================================== */
+
+:root {
+  --bg-dark: #0A0C0F;
+  --bg-surface: #14171D;
+  --bg-surface-elevated: #1F242D;
+
+  --text-primary: #F5F7FA;
+  --text-secondary: #9AA6B8;
+  --text-muted: #5C697D;
+
+  --accent-gold: #D4AF37;
+  --accent-gold-bright: #F3D067;
+  --accent-border: rgba(255, 255, 255, 0.08);
+
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-code: 'Fira Code', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Header */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: rgba(10, 12, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--accent-border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+}
+
+.brand-text h1 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.brand-text span {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.25em;
+  display: block;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-gold), #B59020);
+  color: #0A0C0F;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--accent-gold-bright), var(--accent-gold));
+  transform: translateY(-2px);
+}
+
+/* Scroll Animation Container */
+.scroll-animation-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350vh; /* Gives long scroll distance for smooth Scrub */
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #171A21 0%, #0A0C0F 70%);
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 90%;
+  max-width: 500px;
+  z-index: 20;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--scroll-progress, 0%);
+  background: var(--accent-gold);
+  border-radius: 2px;
+  transition: width 0.05s linear;
+}
+
+.progress-label {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  color: var(--accent-gold);
+  min-width: 75px;
+}
+
+/* Stage Badge */
+.stage-status-badge {
+  position: absolute;
+  top: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 20;
+  text-align: center;
+}
+
+.badge-phase {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.badge-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* SVG Stage */
+.morph-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-stage-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Emblem SVG Paths */
+.morph-path {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease;
+}
+
+.frame-path {
+  stroke-width: 16px;
+}
+
+.outer-ring {
+  stroke-width: 12px;
+}
+
+.inner-ring {
+  stroke-width: 10px;
+}
+
+.morph-fill {
+  fill: #FFFFFF;
+  transition: fill 0.3s ease;
+}
+
+/* Bottega Typography SVG Letter Paths */
+.letter-path {
+  fill: none;
+  stroke: var(--accent-gold);
+  stroke-width: 14px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+
+.bottega-subtext {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 12px;
+  fill: #FFFFFF;
+  opacity: 0;
+}
+
+.bottega-loc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  fill: var(--text-secondary);
+  opacity: 0;
+}
+
+/* Scroll Hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* Scrubber Controls */
+.scrubber-card {
+  position: absolute;
+  bottom: 24px;
+  width: 90%;
+  max-width: 600px;
+  background: rgba(20, 23, 29, 0.9);
+  border: 1px solid var(--accent-border);
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scrubber-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.scrubber-header span {
+  font-family: var(--font-code);
+  color: var(--accent-gold);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+
+/* Content Section Below Scroll */
+.content-section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.info-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.info-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.info-card-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.tag {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.info-card-body p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.info-item {
+  background: var(--bg-surface-elevated);
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.info-val {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--accent-gold);
+  color: #0A0C0F;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 200;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

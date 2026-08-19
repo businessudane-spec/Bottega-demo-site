@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Bottega Design Studio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bottega-inner-page">
+
+<!-- =====================================================
+     SITE HEADER
+====================================================== -->
+<header class="site-header site-header-dark">
+    <div class="header-inner">
+        <div class="site-brand">
+            <a href="index.html" class="brand-link">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="12 2 22 12 12 22 2 12 12 2"></polygon>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span class="brand-name">BOTTEGA</span>
+            </a>
+        </div>
+
+        <nav class="main-nav">
+            <ul class="main-menu">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <a href="contact.html" class="contact-link active-page">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="bottega-main">
+
+    <!-- HERO / BANNER -->
+    <section class="page-hero-section">
+        <div class="bottega-container">
+            <span class="section-label">GET IN TOUCH</span>
+            <h1 class="page-hero-title">Start a Project or<br>Conversation</h1>
+            <p class="page-hero-subtitle">Tell us what you are imagining, and let's build thoughtful spaces shaped around your vision.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM & DETAILS -->
+    <section class="bottega-contact-section" style="padding-top: 0;">
+        <div class="bottega-container">
+            <div class="contact-grid">
+                <div class="contact-info-col">
+                    <span class="section-label">STUDIO INFORMATION</span>
+                    <h2 class="contact-heading">Let's create<br>spaces that<br>matter.</h2>
+                    <p class="contact-subtext">We consult on private luxury homes, eco resorts, master plans, and bespoke interior spaces throughout South India.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <span class="detail-label">Main Studio</span>
+                            <p class="detail-value">Calicut, Kerala, India</p>
+                        </div>
+                        <div class="contact-detail-item">
+                            <span class="detail-label">Urban Office</span>
+                            <p class="detail-value">Indiranagar, Bangalore, India</p>
+                        </div>
+                        <div class="contact-detail-item">
+                            <span class="detail-label">Direct Email</span>
+                            <p class="detail-value"><a href="mailto:bottegaconstructions@gmail.com">bottegaconstructions@gmail.com</a></p>
+                        </div>
+                        <div class="contact-detail-item">
+                            <span class="detail-label">Telephone</span>
+                            <p class="detail-value">+91 98765 43210</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-col">
+                    <form class="bottega-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out to Bottega Design Studio. We will contact you shortly.');">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Name</label>
+                                <input type="text" id="form-name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Email</label>
+                                <input type="email" id="form-email" placeholder="Your email address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-phone">Phone</label>
+                                <input type="tel" id="form-phone" placeholder="Your contact number">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-service">Service Required</label>
+                                <select id="form-service">
+                                    <option value="architecture">Architectural Design</option>
+                                    <option value="interior">Interior Design</option>
+                                    <option value="master-planning">Master Planning</option>
+                                    <option value="landscape">Landscape Architecture</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message">Tell us about your project</label>
+                            <textarea id="form-message" rows="5" placeholder="Share your project details, location, timeline, or special requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Send Enquiry →
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bottega-footer-section">
+    <div class="bottega-container">
+        <div class="footer-top-grid">
+            <div class="footer-col-headline">
+                <h2 class="footer-headline">Spaces shaped<br>by place.</h2>
+            </div>
+            <div class="footer-links-wrapper">
+                <div class="footer-col">
+                    <span class="footer-col-title">Privacy & Legal</span>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-col-title">Navigation</span>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About Studio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-col-title">Contact</span>
+                    <p class="footer-contact-text">
+                        Calicut, Kerala, India<br>
+                        <a href="mailto:bottegaconstructions@gmail.com" class="footer-email">bottegaconstructions@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-watermark">
+            <h1>BOTTEGA</h1>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

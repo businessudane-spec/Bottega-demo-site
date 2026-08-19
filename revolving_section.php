@@ -1,0 +1,632 @@
+<?php
+/**
+ * Bottega Design Studio - Revolving Wheel Sticky Scroll Component (revolving_section.php)
+ * 
+ * Usage in any PHP / WordPress theme:
+ * <?php include 'revolving_section.php'; ?>
+ */
+?>
+
+<!-- ========================================================================
+     REVOLVING WHEEL STICKY SCROLL SECTION (STANDALONE PHP COMPONENT)
+     ======================================================================== -->
+<style>
+
+.bds-revolving-wrapper,
+.bds-revolving-wrapper-2 {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+}
+
+/* Sticky canvas starting with WHITE background */
+.bds-revolving-canvas {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  color: #050505;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/* STAGE 1: Radiating 8-Spoke Numbered Starburst Dial */
+.bds-starburst-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bds-starburst-svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.bds-spoke-num {
+  position: absolute;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.bds-spoke-1 { top: 48%; left: 16%; }
+.bds-spoke-2 { top: 21%; left: 26%; }
+.bds-spoke-3 { top: 3%;  left: 52%; }
+.bds-spoke-4 { top: 14%; left: 80%; }
+.bds-spoke-5 { top: 48%; left: 95%; }
+.bds-spoke-6 { top: 84%; left: 85%; }
+.bds-spoke-7 { top: 98%; left: 52%; }
+.bds-spoke-8 { top: 91%; left: 31%; }
+
+/* Stage 1 Headline */
+.bds-stage1-headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+  width: 90%;
+  max-width: 900px;
+}
+
+.bds-stage1-title {
+  font-family: inherit;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: currentColor;
+}
+
+/* STAGE 2: Editorial Quote Header & Interactive Carousel Controls */
+.bds-stage2-container {
+  position: absolute;
+  top: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 950px;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
+
+.bds-stage2-badge {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.bds-stage2-quote {
+  font-family: inherit;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+/* Flow-based Centered Carousel Control Bar below quote text */
+.bds-carousel-control-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  z-index: 25;
+  background: rgba(18, 18, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 6px 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.bds-nav-arrow {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.bds-nav-arrow:hover {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.bds-nav-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bds-carousel-counter {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.9);
+  min-width: 55px;
+  text-align: center;
+  user-select: none;
+}
+
+/* =========================================================
+   STAGE 3 — CENTERED FOUNDATION TEXT
+========================================================= */
+
+.bds-stage3-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(90vw, 1000px);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.bds-stage3-title {
+    margin: 0 auto 32px auto;
+    padding: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: clamp(58px, 8vw, 125px);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 0.88;
+    color: #ffffff;
+    text-align: center;
+    white-space: normal;
+}
+
+.bds-stage3-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: min(650px, 90vw);
+    margin: 0 auto;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.65);
+    text-align: left;
+}
+
+/* Gallery Photo Frames WITHOUT BORDER RADIUS (Sharp Rectangles, Responsive Size) */
+.bds-gallery-wheel-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 15;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.bds-gallery-card {
+  position: absolute;
+  width: clamp(150px, 14vw, 185px);
+  height: clamp(190px, 20vw, 230px);
+  border-radius: 0px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+  transform-origin: center center;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  will-change: transform, opacity;
+}
+
+.bds-gallery-card-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 0px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.bds-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SECTION 2: AUTOMATIC INFINITE BRAND LOGO MARQUEE BELOW HEADLINE */
+.bds-revolving-canvas-2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #050505;
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bds-brands-headline-container {
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+  max-width: 950px;
+  margin-bottom: 3.5rem;
+}
+
+.bds-brands-headline {
+  font-family: inherit;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+/* Automatic Continuous Horizontal Brand Marquee Ticker */
+.bds-brand-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  padding: 1.5rem 0;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.bds-brand-marquee-track {
+  display: inline-flex;
+  gap: 4rem;
+  align-items: center;
+  animation: bdsMarqueeAuto 22s linear infinite;
+  will-change: transform;
+}
+
+@keyframes bdsMarqueeAuto {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.bds-brand-logo-item {
+  font-family: inherit;
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+.bds-brand-logo-item:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.bds-brand-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .bds-stage3-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+</style>
+
+<!-- SECTION 1: STARBURST DIAL -> CAROUSEL WITH ARROWS -> REVOLVING RECTANGULAR RING -->
+<section class="bds-revolving-wrapper">
+  <div class="bds-revolving-canvas">
+
+    <!-- STAGE 1: Radiating 8-Spoke Numbered Starburst Dial -->
+    <div class="bds-starburst-container">
+      <svg class="bds-starburst-svg" viewBox="0 0 800 800" fill="none">
+        <line x1="160" y1="410" x2="640" y2="390" stroke="currentColor" stroke-opacity="0.25" stroke-width="1.5"/>
+        <line x1="220" y1="210" x2="580" y2="590" stroke="currentColor" stroke-opacity="0.25" stroke-width="1.5"/>
+        <line x1="410" y1="30"  x2="390" y2="770" stroke="currentColor" stroke-opacity="0.25" stroke-width="1.5"/>
+        <line x1="630" y1="130" x2="170" y2="670" stroke="currentColor" stroke-opacity="0.25" stroke-width="1.5"/>
+      </svg>
+      <span class="bds-spoke-num bds-spoke-1">01</span>
+      <span class="bds-spoke-num bds-spoke-2">02</span>
+      <span class="bds-spoke-num bds-spoke-3">03</span>
+      <span class="bds-spoke-num bds-spoke-4">04</span>
+      <span class="bds-spoke-num bds-spoke-5">05</span>
+      <span class="bds-spoke-num bds-spoke-6">06</span>
+      <span class="bds-spoke-num bds-spoke-7">07</span>
+      <span class="bds-spoke-num bds-spoke-8">08</span>
+    </div>
+
+    <!-- STAGE 1 Headline -->
+    <div class="bds-stage1-headline">
+      <h1 class="bds-stage1-title">Crafting Timeless<br>Architecture &amp; Interiors</h1>
+    </div>
+
+    <!-- STAGE 2: Editorial Quote Header & Interactive Carousel -->
+    <div class="bds-stage2-container">
+      <div class="bds-stage2-badge">Architecture &middot; Interior &middot; Construction<br>Since 1995</div>
+      <h2 class="bds-stage2-quote">Pioneering architectural excellence, refined interior aesthetics, and precision construction.</h2>
+      
+      <!-- Flow-based Control Bar inside Stage 2 container (Right below quote) -->
+      <div class="bds-carousel-control-bar" id="bdsCarouselControlBar">
+        <button class="bds-nav-arrow" id="bdsPrevBtn" aria-label="Previous Slide">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="bds-carousel-counter" id="bdsCarouselCounter">01 / 08</span>
+        <button class="bds-nav-arrow" id="bdsNextBtn" aria-label="Next Slide">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STAGE 3: Since 1995 -->
+    <div class="bds-stage3-container">
+      <h2 class="bds-stage3-title">Since 1995</h2>
+      <div class="bds-stage3-grid">
+        <div>Integrated architectural studio specializing in master planning, bespoke interior design, and turnkey luxury construction.</div>
+        <div>Three decades of engineering precision, sustainable building strategies, and enduring spatial craftsmanship.</div>
+      </div>
+    </div>
+
+    <!-- Gallery Photo Cards WITHOUT BORDER RADIUS (Sharp Rectangles) -->
+    <div class="bds-gallery-wheel-wrapper">
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal1.jpg" alt="Architect at desk"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal2.jpg" alt="Design team meeting"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal3.jpg" alt="Scale model workshop"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal4.jpg" alt="Architects on stairs"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal1.jpg" alt="Architect working"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal2.jpg" alt="Architectural discussion"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal3.jpg" alt="Studio workshop"></div></div>
+      <div class="bds-gallery-card"><div class="bds-gallery-card-inner"><img src="assets/images/gal4.jpg" alt="Architectural space"></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 2: AUTOMATIC INFINITE BRAND LOGO MARQUEE BELOW HEADLINE -->
+<section class="bds-revolving-wrapper-2">
+  <div class="bds-revolving-canvas-2">
+
+    <!-- Headline Text -->
+    <div class="bds-brands-headline-container">
+      <h2 class="bds-brands-headline">Trusted by Leading Developers &amp; Visionary Clients Since 1995</h2>
+    </div>
+
+    <!-- Automatic Continuous Horizontal Brand Logo Marquee Ticker -->
+    <div class="bds-brand-marquee-container">
+      <div class="bds-brand-marquee-track">
+        <div class="bds-brand-logo-item">COLDY <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">SHOW ME <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">H&Oacute;RSEKA <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">THE GAME <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">3OP&Gamma;E N&ordm;9 <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">BOLSHEVIK <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">A101 <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">WHITEWILL <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">KAZAKOV <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">NAIMAN <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">Little <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">INGRAD <span class="bds-brand-dot"></span></div>
+        
+        <!-- Duplicated track for seamless infinite loop -->
+        <div class="bds-brand-logo-item">COLDY <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">SHOW ME <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">H&Oacute;RSEKA <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">THE GAME <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">3OP&Gamma;E N&ordm;9 <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">BOLSHEVIK <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">A101 <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">WHITEWILL <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">KAZAKOV <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">NAIMAN <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">Little <span class="bds-brand-dot"></span></div>
+        <div class="bds-brand-logo-item">INGRAD <span class="bds-brand-dot"></span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GSAP + ScrollTrigger Animation Engine -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function() {
+  function initBdsRevolving() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      setTimeout(initBdsRevolving, 100);
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const wrapper1 = document.querySelector('.bds-revolving-wrapper');
+    const canvas1 = document.querySelector('.bds-revolving-canvas');
+
+    if (wrapper1 && canvas1) {
+      const cards1 = document.querySelectorAll('.bds-revolving-wrapper .bds-gallery-card');
+      const totalCards1 = cards1.length;
+      let activeIndex = 0;
+
+      const prevBtn = document.getElementById('bdsPrevBtn');
+      const nextBtn = document.getElementById('bdsNextBtn');
+      const counterEl = document.getElementById('bdsCarouselCounter');
+
+      function getWrappedDiff(index, active, total) {
+        let diff = index - active;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+        return diff;
+      }
+
+      function getCardYPosition() {
+        return window.innerWidth <= 768 ? 85 : 70;
+      }
+
+      function updateCarouselPositions() {
+        const spacing = window.innerWidth <= 768 ? 140 : 195;
+        const halfCardWidth = window.innerWidth <= 768 ? 75 : 90;
+        const cardY = getCardYPosition();
+
+        cards1.forEach((card, index) => {
+          const diff = getWrappedDiff(index, activeIndex, totalCards1);
+          const isCenter = diff === 0;
+          const isVisible = Math.abs(diff) <= 2;
+
+          gsap.to(card, {
+            x: diff * spacing - halfCardWidth,
+            y: cardY,
+            scale: isCenter ? 1.05 : (isVisible ? 0.88 : 0.72),
+            opacity: isVisible ? (isCenter ? 1 : 0.7) : 0,
+            zIndex: 20 - Math.abs(diff),
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        });
+
+        if (counterEl) {
+          const displayNum = String(activeIndex + 1).padStart(2, '0');
+          counterEl.textContent = `${displayNum} / 08`;
+        }
+      }
+
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activeIndex = (activeIndex - 1 + totalCards1) % totalCards1;
+          updateCarouselPositions();
+        });
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activeIndex = (activeIndex + 1) % totalCards1;
+          updateCarouselPositions();
+        });
+      }
+
+      const tl1 = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper1,
+          start: 'top top',
+          end: '+=3600',
+          pin: canvas1,
+          pinSpacing: true,
+          scrub: 0.8,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        }
+      });
+
+      // Phase 1: Background transition White -> Dark
+      tl1.to(canvas1, { backgroundColor: '#050505', color: '#ffffff', ease: 'none', duration: 2 }, 0)
+         .to('.bds-starburst-container', { rotation: 180, ease: 'none', duration: 2 }, 0);
+
+      // Phase 2: Fade in Carousel Control Bar & Quote
+      tl1.to('.bds-stage1-headline', { opacity: 0, y: -40, duration: 1 }, 2)
+         .to('.bds-starburst-container', { opacity: 0, scale: 0.8, duration: 1 }, 2)
+         .to('.bds-stage2-container', { opacity: 1, y: 0, duration: 1.2 }, 2.5)
+         .to('.bds-revolving-wrapper .bds-gallery-wheel-wrapper', { autoAlpha: 1, duration: 0.5 }, 2.5);
+
+      // Animate cards into initial symmetrical carousel positions (ALL 5 CARDS VISIBLE: 2 Left, 1 Center, 2 Right)
+      cards1.forEach((card, index) => {
+        const spacing = window.innerWidth <= 768 ? 140 : 195;
+        const halfCardWidth = window.innerWidth <= 768 ? 75 : 90;
+        const diff = getWrappedDiff(index, activeIndex, totalCards1);
+        const cardY = getCardYPosition();
+        const isVisible = Math.abs(diff) <= 2;
+        const isCenter = diff === 0;
+
+        tl1.fromTo(card, 
+          { opacity: 0, x: diff * spacing - halfCardWidth, y: cardY + 80, rotation: 0, borderRadius: '0px', scale: 0.8 },
+          { opacity: isVisible ? (isCenter ? 1 : 0.7) : 0, x: diff * spacing - halfCardWidth, y: cardY, rotation: 0, borderRadius: '0px', scale: isCenter ? 1.05 : 0.88, ease: 'power2.out', duration: 2.5 },
+          2.5
+        );
+      });
+
+      // Phase 3: Transition smoothly into 360° Revolving Wheel for Stage 3
+      tl1.to('.bds-stage2-container', { opacity: 0, y: -30, duration: 1 }, 5.5)
+         .to('.bds-stage3-container', { opacity: 1, y: 0, duration: 1.5 }, 6.0);
+
+      const radius1 = Math.min(window.innerWidth * 0.36, 440);
+
+      cards1.forEach((card, index) => {
+        const angle = (index / totalCards1) * (2 * Math.PI);
+        const targetX = Math.cos(angle) * radius1 - 90;
+        const targetY = Math.sin(angle) * radius1 - 120;
+
+        tl1.to(card, {
+          x: targetX,
+          y: targetY,
+          rotation: 0,
+          borderRadius: '0px',
+          scale: 0.75,
+          opacity: 1,
+          ease: 'power2.inOut',
+          duration: 2.5
+        }, 5.8);
+      });
+
+      // Continuous 360° revolving loop
+      tl1.to('.bds-revolving-wrapper .bds-gallery-wheel-wrapper', {
+        rotation: 360,
+        ease: 'none',
+        duration: 4
+      }, 8.2);
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initBdsRevolving();
+  } else {
+    document.addEventListener('DOMContentLoaded', initBdsRevolving);
+  }
+
+  window.addEventListener('load', () => {
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+  });
+})();
+</script>

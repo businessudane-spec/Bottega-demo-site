@@ -1,0 +1,1707 @@
+/*
+Theme Name: Bottega India
+Theme URI: https://bottegaindia.in/
+Description: Complete Master Editorial Architecture Theme for Bottega India.
+Version: 3.2.0
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --color-bg-light: #fbfbf9;
+    --color-bg-white: #ffffff;
+    --color-bg-dark: #0a0a0a;
+    --color-text-dark: #141414;
+    --color-text-muted: #6e6a64;
+    --color-border: rgba(0, 0, 0, 0.12);
+    --color-border-dark: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.bottega-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.creative-heading {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--color-text-dark);
+    margin-bottom: 32px;
+}
+
+/* =========================================================
+   TYPEWRITER & LUXURY SCROLL REVEAL ANIMATIONS
+========================================================= */
+.tw-text {
+    white-space: pre-line;
+}
+
+.tw-cursor {
+    display: inline-block;
+    font-weight: 300;
+    color: currentColor;
+    animation: tw-blink 0.8s infinite;
+    margin-left: 2px;
+}
+
+@keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Scroll Fade & Slide Reveal */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Curtain Wipe Reveal for Images */
+.reveal-curtain-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-curtain-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #141414;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.reveal-curtain-wrap.is-visible::after {
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+/* =========================================================
+   SITE HEADER & NAVIGATION
+========================================================= */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 32px 40px;
+    transition: all 0.3s ease;
+}
+
+.site-header-dark {
+    position: relative;
+    background: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-header-dark .brand-link {
+    color: var(--color-text-dark);
+}
+
+.brand-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.main-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.main-menu a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+}
+
+.site-header-dark .main-menu a {
+    color: var(--color-text-dark);
+}
+
+.main-menu a.active-page {
+    font-weight: 600;
+    border-bottom: 2px solid currentColor;
+}
+
+.main-menu a:hover {
+    color: var(--color-text-dark);
+}
+
+.site-header-transparent .main-menu a:hover {
+    color: #ffffff;
+}
+
+.contact-link {
+    padding: 8px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+}
+
+.site-header-dark .contact-link {
+    color: var(--color-text-dark);
+    border-color: var(--color-border);
+}
+
+.contact-link:hover,
+.site-header-dark .contact-link:hover {
+    background: var(--color-text-dark);
+    color: #ffffff;
+}
+
+/* =========================================================
+   INFINITE SCROLLING MARQUEE BANNERS
+========================================================= */
+.bottega-marquee-wrapper {
+    background: var(--color-bg-dark);
+    color: #ffffff;
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    animation: marquee-scroll 35s linear infinite;
+}
+
+.dot {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.press-marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 40px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.press-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 48px;
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.45);
+    animation: press-marquee-scroll 30s linear infinite;
+}
+
+.star {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes press-marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   EDGE-TO-EDGE 100% FULL-WIDTH ORIGINAL GROUP TEAM PHOTO
+========================================================= */
+.about-photo-section-full {
+    width: 100%;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    margin: 40px 0 80px;
+}
+
+.full-width-wrap {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
+
+.full-width-wrap .group-team-photo {
+    width: 100%;
+    height: 720px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9);
+    transition: filter 0.4s ease;
+}
+
+.full-width-wrap:hover .group-team-photo {
+    filter: brightness(0.8);
+}
+
+.full-photo-overlay-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 60px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 5;
+}
+
+.photo-caption-light {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Person Hotspot Target Pin & Pulse Animation */
+.person-hotspot {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.hotspot-pulse {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #141414;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    animation: pulse-ring 2s infinite;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.person-hotspot:hover .hotspot-pulse {
+    transform: scale(1.4);
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+@keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* Hover Profile Pop-Up Box */
+.person-profile-popup {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px) scale(0.9);
+    width: 260px;
+    padding: 20px 24px;
+    background: rgba(10, 10, 10, 0.94);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+    pointer-events: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+}
+
+.person-hotspot:hover .person-profile-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.popup-studio-tag {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.person-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+/* Zoomed Designation Effect on Hover */
+.person-designation {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 600;
+    display: block;
+    transition: transform 0.3s ease;
+    transform: scale(1.15);
+    transform-origin: left center;
+}
+
+/* =========================================================
+   SELECTED PROJECTS SHOWCASE (CAMERA RELOAD SHUTTER WIPE)
+========================================================= */
+.projects-showcase-grid {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 40px;
+    align-items: center;
+}
+
+.project-film-stage {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    cursor: ns-resize;
+}
+
+.camera-shutter-curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 15;
+    transition: opacity 0.15s ease;
+}
+
+.camera-shutter-curtain.wipe {
+    opacity: 0.92;
+}
+
+.film-frame-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 540px;
+    overflow: hidden;
+    opacity: 0;
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    will-change: transform, opacity;
+}
+
+.film-frame-card.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.film-frame-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.featured-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 36px 40px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+    color: #ffffff;
+}
+
+.featured-cat {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.featured-title {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.featured-loc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.projects-list-sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-selector-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-selector-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-white);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.project-selector-item.active,
+.project-selector-item:hover {
+    border-color: var(--color-text-dark);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.proj-num {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--color-text-muted);
+}
+
+.project-selector-item.active .proj-num {
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+.proj-meta h4 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.proj-tag {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+/* =========================================================
+   INNER PAGE HERO BANNER
+========================================================= */
+.page-hero-section {
+    padding: 100px 0 60px;
+    background: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.page-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 84px);
+    font-weight: 400;
+    line-height: 0.95;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+}
+
+.page-hero-subtitle {
+    font-size: 16px;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   1. HERO SECTION & ATMOSPHERE WIDGET (HOMEPAGE)
+========================================================= */
+.bottega-hero-section {
+    position: relative;
+    width: 100%;
+    height: 92vh;
+    min-height: 600px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 40px 80px;
+    overflow: hidden;
+}
+
+.bottega-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.85);
+    transition: opacity 0.4s ease;
+}
+
+.bottega-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.65) 100%);
+}
+
+.bottega-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.bottega-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6.5vw, 95px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.hero-atmosphere-widget {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 16px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.widget-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.atmosphere-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.atmos-btn {
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 11px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.atmos-btn.active,
+.atmos-btn:hover {
+    background: #ffffff;
+    color: var(--color-text-dark);
+}
+
+/* =========================================================
+   2. STATEMENT & ABOUT HOME SECTION
+========================================================= */
+.bottega-statement-section {
+    padding: 120px 0;
+    background: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.statement-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    margin-bottom: 90px;
+}
+
+.statement-heading {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 62px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+    margin-bottom: 48px;
+    max-width: 900px;
+}
+
+.statement-text-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.statement-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+.statement-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-text-dark);
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+}
+
+.dual-media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.dual-media-item {
+    position: relative;
+    overflow: hidden;
+    background: #f0ede8;
+}
+
+.dual-img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sketch-card .dual-img {
+    filter: grayscale(0.85) contrast(1.1);
+}
+
+.dual-media-item:hover .dual-img {
+    transform: scale(1.04);
+}
+
+.media-caption {
+    display: block;
+    padding: 16px 0 0;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   SERVICES PAGE DETAILED STYLES (services.html)
+========================================================= */
+.services-detail-section {
+    padding: 60px 0 100px;
+}
+
+.service-detail-block {
+    display: grid;
+    grid-template-columns: 80px 1fr 480px;
+    gap: 50px;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--color-border);
+    align-items: start;
+}
+
+.service-detail-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--color-text-muted);
+}
+
+.service-detail-content h2 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: var(--color-text-dark);
+}
+
+.service-detail-lead {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    margin-bottom: 16px;
+}
+
+.service-detail-content p {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 24px;
+}
+
+.service-feature-list {
+    list-style: disc;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color-text-dark);
+}
+
+.service-detail-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   PROJECTS PAGE STYLES & CATEGORY FILTERS (projects.html)
+========================================================= */
+.projects-gallery-section {
+    padding: 60px 0 120px;
+}
+
+.projects-filter-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--color-text-dark);
+    color: #ffffff;
+    border-color: var(--color-text-dark);
+}
+
+.portfolio-grid-full {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+}
+
+.portfolio-item {
+    cursor: pointer;
+}
+
+.portfolio-img-wrapper {
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #eee;
+}
+
+.portfolio-img-wrapper img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.04);
+}
+
+.portfolio-category {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.portfolio-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+}
+
+.portfolio-location {
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+/* =========================================================
+   ABOUT PAGE STYLES (about.html)
+========================================================= */
+.about-narrative-section {
+    padding: 80px 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+}
+
+.stat-box-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.stat-single {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4vw, 54px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.about-lead {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--color-text-dark);
+    margin-bottom: 48px;
+}
+
+.about-text-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.text-block h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.text-block p {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.photo-caption {
+    display: block;
+    padding-top: 16px;
+    font-size: 12px;
+    color: var(--color-text-muted);
+}
+
+.about-locations-section {
+    padding: 80px 0 120px;
+    background: var(--color-bg-white);
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 24px;
+}
+
+.location-card {
+    padding: 40px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-light);
+}
+
+.location-card h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.loc-address {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    margin-bottom: 16px;
+}
+
+.loc-type {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+}
+
+/* =========================================================
+   CONTACT PAGE STYLES (contact.html)
+========================================================= */
+.bottega-contact-section {
+    padding: 80px 0 120px;
+    background: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.contact-heading {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    color: var(--color-text-dark);
+}
+
+.contact-subtext {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 48px;
+    max-width: 480px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 32px;
+}
+
+.detail-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.detail-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+}
+
+.detail-value a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-text-dark);
+}
+
+.bottega-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background: var(--color-bg-white);
+    padding: 48px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-light);
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-text-dark);
+}
+
+/* =========================================================
+   CREATIVE SECTIONS (MATERIALITY, PROCESS, PRESS)
+========================================================= */
+.bottega-materiality-section {
+    padding: 120px 0;
+    background: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.section-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+}
+
+.section-lead-text {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    max-width: 420px;
+}
+
+.materiality-interactive-grid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 60px;
+    align-items: center;
+}
+
+.material-tabs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.material-tab-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.material-tab-item.active,
+.material-tab-item:hover {
+    border-color: var(--color-text-dark);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.mat-num {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--color-text-muted);
+}
+
+.mat-info h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.mat-tag {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.material-card-box {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.material-card-box img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.material-card-body {
+    padding: 36px;
+}
+
+.mat-origin-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.material-card-body h4 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.material-card-body p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+.bottega-process-section {
+    padding: 120px 0;
+    background: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.process-step-card {
+    padding: 36px 28px;
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    position: relative;
+}
+
+.step-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+}
+
+.process-step-card h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    line-height: 1.15;
+}
+
+.process-step-card p {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.bottega-press-section {
+    padding: 100px 0;
+    background: var(--color-bg-dark);
+    color: #ffffff;
+    text-align: center;
+}
+
+.press-quote {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    max-width: 900px;
+    margin: 40px auto 60px;
+    transition: opacity 0.3s ease;
+}
+
+.press-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 24px;
+}
+
+/* =========================================================
+   CTA BANNER SECTION
+========================================================= */
+.cta-banner-section {
+    padding: 100px 0;
+    background: var(--color-bg-white);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.cta-banner-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 400;
+    margin-bottom: 32px;
+}
+
+.submit-btn {
+    padding: 16px 32px;
+    background: var(--color-text-dark);
+    color: #ffffff;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    align-self: flex-start;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   SERVICES & PROJECTS HOMEPAGE ACCORDIONS
+========================================================= */
+.bottega-services-section {
+    padding: 120px 0;
+    background: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.services-header {
+    margin-bottom: 50px;
+}
+
+.services-main-heading {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 3.5vw, 50px);
+    font-weight: 400;
+    color: var(--color-text-dark);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 60px;
+    align-items: center;
+}
+
+.services-accordion {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.service-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-item h3 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 2.8vw, 40px);
+    font-weight: 400;
+    color: var(--color-text-dark);
+    transition: color 0.3s ease;
+}
+
+.accordion-icon {
+    font-size: 20px;
+    color: var(--color-text-muted);
+    transition: transform 0.3s ease;
+}
+
+.service-item.active h3 {
+    font-weight: 600;
+}
+
+.service-item.active .accordion-icon {
+    transform: rotate(-90deg);
+}
+
+.service-preview-card {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.4s ease;
+}
+
+.preview-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+    color: #ffffff;
+}
+
+.preview-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.preview-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 480px;
+}
+
+.bottega-projects-section {
+    padding: 120px 0;
+    background: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.projects-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.view-all-link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.view-all-link:hover {
+    opacity: 0.6;
+}
+
+/* =========================================================
+   FOOTER SECTION & INFINITE MARQUEE WATERMARK
+========================================================= */
+.bottega-footer-section {
+    background: var(--color-bg-dark);
+    color: #ffffff;
+    padding: 120px 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.footer-headline {
+    font-family: var(--font-display);
+    font-size: clamp(45px, 5.5vw, 80px);
+    font-weight: 400;
+    line-height: 0.95;
+    color: #ffffff;
+}
+
+.footer-links-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-col-title {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    display: block;
+    margin-bottom: 24px;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+}
+
+.footer-contact-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer-email {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* Footer Infinite Horizontal Marquee Watermark */
+.footer-watermark {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 40px;
+    user-select: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
+}
+
+.footer-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 60px;
+    animation: footer-marquee-loop 24s linear infinite;
+    will-change: transform;
+}
+
+.footer-watermark h1 {
+    font-family: var(--font-display);
+    font-size: clamp(100px, 20vw, 310px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 0.75;
+    display: inline-block;
+}
+
+.watermark-star {
+    font-size: clamp(50px, 9vw, 140px);
+    color: rgba(255, 255, 255, 0.25);
+    line-height: 1;
+}
+
+@keyframes footer-marquee-loop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+@media (max-width: 1024px) {
+    .statement-grid,
+    .service-detail-block,
+    .portfolio-grid-full,
+    .about-grid,
+    .about-text-blocks,
+    .locations-grid,
+    .materiality-interactive-grid,
+    .studio-grid,
+    .services-grid,
+    .contact-grid,
+    .footer-top-grid,
+    .projects-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .process-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bottega-hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .service-detail-image img,
+    .portfolio-img-wrapper img,
+    .project-film-stage,
+    .full-width-wrap .group-team-photo {
+        height: 480px;
+    }
+
+    .footer-links-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bottega-container {
+        padding: 0 24px;
+    }
+
+    .site-header {
+        padding: 24px;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    .process-steps-grid,
+    .statement-text-grid,
+    .dual-media-grid,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .bottega-form {
+        padding: 28px;
+    }
+
+    .dual-img {
+        height: 340px;
+    }
+
+    .service-preview-card,
+    .project-film-stage,
+    .full-width-wrap .group-team-photo {
+        height: 360px;
+    }
+}
