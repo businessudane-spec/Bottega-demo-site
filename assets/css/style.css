@@ -2,7 +2,7 @@
 Theme Name: Bottega India
 Theme URI: https://bottegaindia.in/
 Description: Complete Master Editorial Architecture Theme for Bottega India.
-Version: 3.7.0
+Version: 3.8.0
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
@@ -68,11 +68,15 @@ body {
    SITE HEADER & LOGO ONLY STICKY ENGINE
 ========================================================= */
 .site-header-logo-img {
-    height: 48px;
+    height: 46px;
     width: auto;
     object-fit: contain;
     display: block;
     transition: height 0.3s ease, filter 0.3s ease;
+}
+
+.site-header-dark .site-header-logo-img {
+    filter: invert(1);
 }
 
 .site-brand.is-sticky-logo {
@@ -89,13 +93,9 @@ body {
     animation: sticky-pop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.site-brand.is-sticky-logo .brand-logo-black {
-    display: none !important;
-}
-
-.site-brand.is-sticky-logo .brand-logo-white {
-    display: block !important;
+.site-brand.is-sticky-logo .site-header-logo-img {
     height: 32px;
+    filter: invert(0) !important;
 }
 
 @keyframes sticky-pop {
