@@ -2,7 +2,7 @@
 Theme Name: Bottega India
 Theme URI: https://bottegaindia.in/
 Description: Complete Master Editorial Architecture Theme for Bottega India.
-Version: 3.2.0
+Version: 3.7.0
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
@@ -62,6 +62,238 @@ body {
     line-height: 1.05;
     color: var(--color-text-dark);
     margin-bottom: 32px;
+}
+
+/* =========================================================
+   SITE HEADER & LOGO ONLY STICKY ENGINE
+========================================================= */
+.site-header-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: height 0.3s ease, filter 0.3s ease;
+}
+
+.site-brand.is-sticky-logo {
+    position: fixed;
+    top: 20px;
+    left: 40px;
+    z-index: 1000;
+    padding: 10px 18px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: sticky-pop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-brand.is-sticky-logo .brand-logo-black {
+    display: none !important;
+}
+
+.site-brand.is-sticky-logo .brand-logo-white {
+    display: block !important;
+    height: 32px;
+}
+
+@keyframes sticky-pop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   OUR LOCATIONS - STUDIO PRACTICE SECTION (50vw / 50vw SPLIT)
+========================================================= */
+.bottega-locations-studio-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: var(--color-bg-white);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    padding: 0;
+}
+
+.locations-studio-split-full {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    align-items: center;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.studio-image-left-flush {
+    width: 50vw;
+    height: 100%;
+}
+
+.studio-team-img-flush {
+    width: 100%;
+    height: 720px;
+    object-fit: cover;
+    display: block;
+}
+
+.studio-info-right-col {
+    padding: 80px 80px 80px 60px;
+    max-width: 680px;
+}
+
+.studio-label-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.studio-label-row .section-label {
+    margin-bottom: 0;
+}
+
+.label-line {
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.locations-main-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 4.8vw, 68px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--color-text-dark);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.locations-subtext {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 540px;
+    margin-bottom: 48px;
+}
+
+.locations-list-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.loc-list-item {
+    display: grid;
+    grid-template-columns: 40px 1fr 140px 30px;
+    align-items: center;
+    padding: 24px 0;
+    border-top: 1px solid var(--color-border);
+    transition: background 0.2s ease;
+}
+
+.loc-list-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.loc-index {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.loc-name-col h3 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1.1;
+}
+
+.loc-tag {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: block;
+}
+
+.loc-state {
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+.loc-arrow {
+    font-size: 20px;
+    color: var(--color-text-dark);
+    transition: transform 0.2s ease;
+}
+
+.loc-list-item:hover .loc-arrow {
+    transform: translate(3px, -3px);
+}
+
+.locations-footer-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding-top: 12px;
+}
+
+/* =========================================================
+   EDGE-TO-EDGE 100% FULL-WIDTH SEAMLESS PANORAMIC BANNER
+========================================================= */
+.bottega-banner-full-section {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+    margin: 40px 0 80px;
+}
+
+.full-banner-wrap {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
+
+.banner-full-img {
+    width: 100%;
+    height: auto;
+    max-height: 640px;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-caption-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 60px;
+    background: #fbfbf9;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
 }
 
 /* =========================================================
@@ -162,19 +394,6 @@ body {
     color: var(--color-text-dark);
 }
 
-.brand-icon {
-    width: 24px;
-    height: 24px;
-    stroke: currentColor;
-}
-
-.brand-name {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-}
-
 .main-nav {
     display: flex;
     align-items: center;
@@ -239,31 +458,6 @@ body {
 /* =========================================================
    INFINITE SCROLLING MARQUEE BANNERS
 ========================================================= */
-.bottega-marquee-wrapper {
-    background: var(--color-bg-dark);
-    color: #ffffff;
-    padding: 16px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.marquee-track {
-    display: inline-flex;
-    align-items: center;
-    gap: 32px;
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    animation: marquee-scroll 35s linear infinite;
-}
-
-.dot {
-    color: rgba(255, 255, 255, 0.35);
-}
-
 .press-marquee-container {
     overflow: hidden;
     white-space: nowrap;
@@ -286,11 +480,6 @@ body {
 .star {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.25);
-}
-
-@keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
 }
 
 @keyframes press-marquee-scroll {
@@ -772,42 +961,6 @@ body {
     color: var(--color-text-muted);
 }
 
-.dual-media-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-}
-
-.dual-media-item {
-    position: relative;
-    overflow: hidden;
-    background: #f0ede8;
-}
-
-.dual-img {
-    width: 100%;
-    height: 480px;
-    object-fit: cover;
-    display: block;
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.sketch-card .dual-img {
-    filter: grayscale(0.85) contrast(1.1);
-}
-
-.dual-media-item:hover .dual-img {
-    transform: scale(1.04);
-}
-
-.media-caption {
-    display: block;
-    padding: 16px 0 0;
-    font-size: 12px;
-    color: var(--color-text-muted);
-    letter-spacing: 0.04em;
-}
-
 /* =========================================================
    SERVICES PAGE DETAILED STYLES (services.html)
 ========================================================= */
@@ -1274,48 +1427,6 @@ body {
     color: var(--color-text-muted);
 }
 
-.bottega-process-section {
-    padding: 120px 0;
-    background: var(--color-bg-white);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.process-steps-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    margin-top: 40px;
-}
-
-.process-step-card {
-    padding: 36px 28px;
-    background: var(--color-bg-light);
-    border: 1px solid var(--color-border);
-    position: relative;
-}
-
-.step-badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    color: var(--color-text-muted);
-    margin-bottom: 20px;
-}
-
-.process-step-card h3 {
-    font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 14px;
-    line-height: 1.15;
-}
-
-.process-step-card p {
-    font-size: 13px;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
 .bottega-press-section {
     padding: 100px 0;
     background: var(--color-bg-dark);
@@ -1518,7 +1629,7 @@ body {
 }
 
 /* =========================================================
-   FOOTER SECTION & INFINITE MARQUEE WATERMARK
+   FOOTER SECTION & INFINITE MARQUEE LOGO WATERMARK
 ========================================================= */
 .bottega-footer-section {
     background: var(--color-bg-dark);
@@ -1587,7 +1698,7 @@ body {
     text-decoration: underline !important;
 }
 
-/* Footer Infinite Horizontal Marquee Watermark */
+/* Footer Infinite Horizontal Marquee Logo Watermark */
 .footer-watermark {
     width: 100%;
     overflow: hidden;
@@ -1601,7 +1712,7 @@ body {
 .footer-marquee-track {
     display: inline-flex;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
     animation: footer-marquee-loop 24s linear infinite;
     will-change: transform;
 }
@@ -1618,10 +1729,13 @@ body {
     display: inline-block;
 }
 
-.watermark-star {
-    font-size: clamp(50px, 9vw, 140px);
-    color: rgba(255, 255, 255, 0.25);
-    line-height: 1;
+.footer-marquee-logo-img {
+    height: clamp(60px, 12vw, 160px);
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 16px;
 }
 
 @keyframes footer-marquee-loop {
@@ -1639,6 +1753,7 @@ body {
     .about-grid,
     .about-text-blocks,
     .locations-grid,
+    .locations-studio-split-full,
     .materiality-interactive-grid,
     .studio-grid,
     .services-grid,
@@ -1649,8 +1764,21 @@ body {
         gap: 40px;
     }
 
-    .process-steps-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .locations-studio-split-full {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .studio-image-left-flush {
+        width: 100%;
+    }
+
+    .studio-info-right-col {
+        padding: 0 40px 40px;
+    }
+
+    .studio-team-img-flush {
+        height: 480px;
     }
 
     .bottega-hero-content {
@@ -1684,9 +1812,7 @@ body {
         display: none;
     }
 
-    .process-steps-grid,
     .statement-text-grid,
-    .dual-media-grid,
     .form-row {
         grid-template-columns: 1fr;
     }
@@ -1695,13 +1821,19 @@ body {
         padding: 28px;
     }
 
-    .dual-img {
-        height: 340px;
-    }
-
     .service-preview-card,
     .project-film-stage,
     .full-width-wrap .group-team-photo {
         height: 360px;
+    }
+
+    .banner-caption-bar {
+        padding: 12px 24px;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .loc-list-item {
+        grid-template-columns: 30px 1fr 100px 20px;
     }
 }

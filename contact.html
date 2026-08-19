@@ -18,13 +18,9 @@
 ====================================================== -->
 <header class="site-header site-header-dark">
     <div class="header-inner">
-        <div class="site-brand">
+        <div id="site-brand-logo" class="site-brand">
             <a href="index.html" class="brand-link">
-                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <polygon points="12 2 22 12 12 22 2 12 12 2"></polygon>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-                <span class="brand-name">BOTTEGA</span>
+                <img src="assets/images/bottega_black_logo.png" alt="Bottega Design Studio" class="site-header-logo-img">
             </a>
         </div>
 
@@ -124,6 +120,7 @@
 
 </main>
 
+<!-- MASTER FOOTER WITH INFINITE SCROLLING MARQUEE WATERMARK -->
 <footer class="bottega-footer-section">
     <div class="bottega-container">
         <div class="footer-top-grid">
@@ -156,11 +153,36 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Giant Infinite Horizontal Scrolling Marquee Watermark -->
         <div class="footer-watermark">
-            <h1>BOTTEGA</h1>
+            <div class="footer-marquee-track">
+                <h1>BOTTEGA</h1>
+                <img src="assets/images/bottega_white_logo.png" alt="Bottega Logo" class="footer-marquee-logo-img">
+                <h1>BOTTEGA</h1>
+                <img src="assets/images/bottega_white_logo.png" alt="Bottega Logo" class="footer-marquee-logo-img">
+                <h1>BOTTEGA</h1>
+                <img src="assets/images/bottega_white_logo.png" alt="Bottega Logo" class="footer-marquee-logo-img">
+                <h1>BOTTEGA</h1>
+                <img src="assets/images/bottega_white_logo.png" alt="Bottega Logo" class="footer-marquee-logo-img">
+            </div>
         </div>
     </div>
 </footer>
+
+<script>
+// Sticky Logo Only on Scroll Engine
+document.addEventListener('DOMContentLoaded', () => {
+    const brandLogo = document.getElementById('site-brand-logo');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            brandLogo.classList.add('is-sticky-logo');
+        } else {
+            brandLogo.classList.remove('is-sticky-logo');
+        }
+    });
+});
+</script>
 
 </body>
 </html>

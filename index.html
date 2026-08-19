@@ -18,14 +18,11 @@
 ====================================================== -->
 <header class="site-header site-header-transparent">
     <div class="header-inner">
-        <!-- Brand -->
-        <div class="site-brand">
+        <!-- Brand Logo Only (Text removed as requested) -->
+        <div id="site-brand-logo" class="site-brand">
             <a href="index.html" class="brand-link">
-                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <polygon points="12 2 22 12 12 22 2 12 12 2"></polygon>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-                <span class="brand-name">BOTTEGA</span>
+                <img src="assets/images/bottega_white_logo.png" alt="Bottega Design Studio" class="site-header-logo-img brand-logo-white">
+                <img src="assets/images/bottega_black_logo.png" alt="Bottega Design Studio" class="site-header-logo-img brand-logo-black" style="display:none;">
             </a>
         </div>
 
@@ -68,52 +65,11 @@
     </section>
 
     <!-- =====================================================
-         2. INFINITE SCROLLING BANNER 1
+         2. STATEMENT & STATS WITH SCROLL REVEAL & TYPEWRITER
     ====================================================== -->
-    <div class="bottega-marquee-wrapper">
-        <div class="marquee-track">
-            <span>ARCHITECTURAL DESIGN</span>
-            <span class="dot">•</span>
-            <span>INTERIOR SANCTUARIES</span>
-            <span class="dot">•</span>
-            <span>MASTER PLANNING</span>
-            <span class="dot">•</span>
-            <span>TROPICAL LANDSCAPES</span>
-            <span class="dot">•</span>
-            <span>CALICUT</span>
-            <span class="dot">•</span>
-            <span>BANGALORE</span>
-            <span class="dot">•</span>
-            <span>KOCHI</span>
-            <span class="dot">•</span>
-            <span>BOTTEGA DESIGN STUDIO</span>
-            <span class="dot">•</span>
-            <!-- Duplicate for infinite seamless loop -->
-            <span>ARCHITECTURAL DESIGN</span>
-            <span class="dot">•</span>
-            <span>INTERIOR SANCTUARIES</span>
-            <span class="dot">•</span>
-            <span>MASTER PLANNING</span>
-            <span class="dot">•</span>
-            <span>TROPICAL LANDSCAPES</span>
-            <span class="dot">•</span>
-            <span>CALICUT</span>
-            <span class="dot">•</span>
-            <span>BANGALORE</span>
-            <span class="dot">•</span>
-            <span>KOCHI</span>
-            <span class="dot">•</span>
-            <span>BOTTEGA DESIGN STUDIO</span>
-            <span class="dot">•</span>
-        </div>
-    </div>
-
-    <!-- =====================================================
-         3. STATEMENT & STATS WITH SCROLL REVEAL & TYPEWRITER
-    ====================================================== -->
-    <section class="bottega-statement-section">
+    <section class="bottega-statement-section" style="border-bottom: none; padding-bottom: 40px;">
         <div class="bottega-container">
-            <div class="statement-grid">
+            <div class="statement-grid" style="margin-bottom: 0;">
                 <div class="statement-meta reveal-on-scroll">
                     <span class="section-label">WHO WE ARE</span>
                 </div>
@@ -148,23 +104,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Dual Media Showcase with Curtain Reveal -->
-            <div class="dual-media-grid">
-                <div class="dual-media-item sketch-card reveal-curtain-wrap">
-                    <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1200&q=80" alt="Elevation Sketch" class="dual-img">
-                    <span class="media-caption">Architectural Elevation & Concept Drawing</span>
-                </div>
-                <div class="dual-media-item photo-card reveal-curtain-wrap">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Courtyard Residence" class="dual-img">
-                    <span class="media-caption">Courtyard Residence, Calicut</span>
-                </div>
+    <!-- SEAMLESS 100% FULL-WIDTH PANORAMIC BANNER (CLIENT'S EXACT DOWNLOADED IMAGES: IMG_2664.png & ChatGPT-Image-Aug-14-2026-11_57_50-AM-6.png) -->
+    <section class="bottega-banner-full-section reveal-curtain-wrap">
+        <div class="full-banner-wrap">
+            <img src="assets/images/client_dual_banner.jpg" alt="Architectural Sketch to Realized Structure" class="banner-full-img">
+            <div class="banner-caption-bar">
+                <span class="caption-left">01 — Conceptual Architectural Sketch</span>
+                <span class="caption-right">02 — Realized Structure</span>
             </div>
         </div>
     </section>
 
     <!-- =====================================================
-         4. REFINED EDITORIAL ETHOS & PRACTICE SECTION
+         3. REFINED EDITORIAL ETHOS & PRACTICE SECTION
     ====================================================== -->
     <section class="bottega-materiality-section">
         <div class="bottega-container">
@@ -226,43 +181,59 @@
     </section>
 
     <!-- =====================================================
-         5. ARCHITECTURAL DESIGN RITUAL (PROCESS TIMELINE)
+         4. OUR LOCATIONS — STUDIO PRACTICE (50vw / 50vw SPLIT)
     ====================================================== -->
-    <section class="bottega-process-section">
-        <div class="bottega-container">
-            <span class="section-label reveal-on-scroll">OUR METHODOLOGY</span>
-            <h2 class="creative-heading reveal-on-scroll">The 4-Stage Architectural Ritual</h2>
+    <section class="bottega-locations-studio-section">
+        <div class="locations-studio-split-full reveal-on-scroll">
+            <!-- Left Column: Image Flush to Left Edge of Screen (No Badge) -->
+            <div class="studio-image-left-flush">
+                <img src="assets/images/studio_team_drafting.png" alt="Bottega Studio Team Drafting" class="studio-team-img-flush">
+            </div>
 
-            <div class="process-steps-grid">
-                <div class="process-step-card reveal-on-scroll">
-                    <div class="step-badge">STAGE 01</div>
-                    <h3>Topographical & Climate Reading</h3>
-                    <p>We analyze wind vectors, solar geometry, microclimate, and native soil contours to determine building orientation.</p>
+            <!-- Right Column: Text & Locations List -->
+            <div class="studio-info-right-col">
+                <div class="studio-label-row">
+                    <span class="section-label">OUR LOCATIONS</span>
+                    <span class="label-line"></span>
                 </div>
 
-                <div class="process-step-card reveal-on-scroll">
-                    <div class="step-badge">STAGE 02</div>
-                    <h3>Vernacular Hand-Sketching</h3>
-                    <p>Initial spatial volumes are sketched by hand on paper before 3D digital simulation and sun-path mapping.</p>
+                <h2 class="locations-main-title">Designed for place.<br>Rooted in South India.</h2>
+
+                <p class="locations-subtext">Our studios bring together architecture, interiors, and furniture with a strong understanding of place, climate, and context.</p>
+
+                <!-- Horizontal Location Items -->
+                <div class="locations-list-wrap">
+                    <div class="loc-list-item">
+                        <span class="loc-index">01</span>
+                        <div class="loc-name-col">
+                            <h3>Calicut</h3>
+                            <span class="loc-tag">HEAD OFFICE</span>
+                        </div>
+                        <span class="loc-state">Kerala, India</span>
+                        <span class="loc-arrow">↗</span>
+                    </div>
+
+                    <div class="loc-list-item">
+                        <span class="loc-index">02</span>
+                        <div class="loc-name-col">
+                            <h3>Bangalore</h3>
+                            <span class="loc-tag">STUDIO</span>
+                        </div>
+                        <span class="loc-state">Karnataka, India</span>
+                        <span class="loc-arrow">↗</span>
+                    </div>
                 </div>
 
-                <div class="process-step-card reveal-on-scroll">
-                    <div class="step-badge">STAGE 03</div>
-                    <h3>Artisanal Material Sourcing</h3>
-                    <p>We source local granite, reclaimed teak, and terracotta directly from traditional South Indian craftsmen.</p>
-                </div>
-
-                <div class="process-step-card reveal-on-scroll">
-                    <div class="step-badge">STAGE 04</div>
-                    <h3>Precision Handcraft & Delivery</h3>
-                    <p>On-site stonemasons and architects execute every joint, courtyard pool, and louvered facade to perfection.</p>
+                <div class="locations-footer-row">
+                    <span class="loc-foot-left">WORKING ACROSS SOUTH INDIA</span>
+                    <span class="loc-foot-right">KERALA · KARNATAKA · GOA</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- =====================================================
-         6. EDITORIAL PRESS & INFINITE SCROLLING MARQUEE
+         5. EDITORIAL PRESS & INFINITE SCROLLING MARQUEE
     ====================================================== -->
     <section class="bottega-press-section">
         <div class="bottega-container">
@@ -307,7 +278,7 @@
     </section>
 
     <!-- =====================================================
-         7. SERVICES SHOWCASE
+         6. SERVICES SHOWCASE
     ====================================================== -->
     <section class="bottega-services-section">
         <div class="bottega-container">
@@ -363,7 +334,7 @@
     </section>
 
     <!-- =====================================================
-         8. SELECTED PROJECTS SHOWCASE WITH CAMERA RELOAD
+         7. SELECTED PROJECTS SHOWCASE WITH CAMERA RELOAD
     ====================================================== -->
     <section class="bottega-projects-section">
         <div class="bottega-container">
@@ -491,7 +462,7 @@
 </main>
 
 <!-- =====================================================
-     FOOTER SECTION WITH INFINITE MARQUEE WATERMARK
+     FOOTER SECTION WITH INFINITE MARQUEE LOGO WATERMARK
 ====================================================== -->
 <footer class="bottega-footer-section">
     <div class="bottega-container">
@@ -529,17 +500,17 @@
             </div>
         </div>
 
-        <!-- Giant Infinite Horizontal Scrolling Marquee Watermark -->
+        <!-- Giant Infinite Horizontal Scrolling Marquee Watermark with Exact botteg-white-loho.png -->
         <div class="footer-watermark">
             <div class="footer-marquee-track">
                 <h1>BOTTEGA</h1>
-                <span class="watermark-star">✦</span>
+                <img src="assets/images/botteg-white-loho.png" alt="Bottega Logo" class="footer-marquee-logo-img">
                 <h1>BOTTEGA</h1>
-                <span class="watermark-star">✦</span>
+                <img src="assets/images/botteg-white-loho.png" alt="Bottega Logo" class="footer-marquee-logo-img">
                 <h1>BOTTEGA</h1>
-                <span class="watermark-star">✦</span>
+                <img src="assets/images/botteg-white-loho.png" alt="Bottega Logo" class="footer-marquee-logo-img">
                 <h1>BOTTEGA</h1>
-                <span class="watermark-star">✦</span>
+                <img src="assets/images/botteg-white-loho.png" alt="Bottega Logo" class="footer-marquee-logo-img">
             </div>
         </div>
     </div>
@@ -547,6 +518,18 @@
 
 <!-- Interactive Scripts -->
 <script>
+// Sticky Logo Only on Scroll Engine
+document.addEventListener('DOMContentLoaded', () => {
+    const brandLogo = document.getElementById('site-brand-logo');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            brandLogo.classList.add('is-sticky-logo');
+        } else {
+            brandLogo.classList.remove('is-sticky-logo');
+        }
+    });
+});
+
 // Typewriter Animation Engine
 function runTypewriter(targetEl, text, speed = 40, callback) {
     if (!targetEl) return;
