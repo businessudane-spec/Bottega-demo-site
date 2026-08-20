@@ -19,11 +19,18 @@
 <header class="site-header site-header-transparent">
     <div class="header-inner">
         <!-- Brand Logo Only (Text removed as requested) -->
-                <div id="site-brand-logo" class="site-brand">
+        <div id="site-brand-logo" class="site-brand">
             <a href="index.html" class="brand-link">
                 <img src="assets/images/bottega_white_logo.png" alt="Bottega Design Studio" class="site-header-logo-img">
             </a>
         </div>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
 
         <!-- Clean Navigation -->
         <nav class="main-nav">
@@ -50,16 +57,6 @@
             <h1 id="hero-typewriter" class="bottega-hero-title">
                 <!-- Typewriter will populate this text dynamically -->
             </h1>
-            
-            <!-- Interactive Atmosphere Simulator Badge -->
-            <div class="hero-atmosphere-widget reveal-on-scroll">
-                <span class="widget-label">Atmosphere Simulator</span>
-                <div class="atmosphere-buttons">
-                    <button class="atmos-btn active" onclick="setHeroMode('day', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85')">Daylight</button>
-                    <button class="atmos-btn" onclick="setHeroMode('sunset', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85')">Golden Hour</button>
-                    <button class="atmos-btn" onclick="setHeroMode('monsoon', 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85')">Monsoon Mist</button>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -106,74 +103,90 @@
         </div>
     </section>
 
-    <!-- SEAMLESS 100% FULL-WIDTH PANORAMIC BANNER (CLIENT'S EXACT DOWNLOADED IMAGES: IMG_2664.png & ChatGPT-Image-Aug-14-2026-11_57_50-AM-6.png) -->
+    <!-- SEAMLESS 100% FULL-WIDTH PANORAMIC BANNER (HOW DRAWINGS COME TO LIFE: fade.png) -->
     <section class="bottega-banner-full-section reveal-curtain-wrap">
         <div class="full-banner-wrap">
-            <img src="assets/images/client_dual_banner.jpg" alt="Architectural Sketch to Realized Structure" class="banner-full-img">
+            <img src="assets/images/fade.png" alt="How Drawings Come to Life" class="banner-full-img">
             <div class="banner-caption-bar">
-                <span class="caption-left">01 — Conceptual Architectural Sketch</span>
+                <span class="caption-left">01 — How Drawings Come to Life</span>
                 <span class="caption-right">02 — Realized Structure</span>
             </div>
         </div>
     </section>
 
     <!-- =====================================================
-         3. REFINED EDITORIAL ETHOS & PRACTICE SECTION
+         3. 3D EDITORIAL MONOGRAPH BOOK FLIP EXPERIENCE
     ====================================================== -->
-    <section class="bottega-materiality-section">
+    <section id="book-story-section" class="bottega-materiality-section bottega-storytelling-section">
         <div class="bottega-container">
             <div class="section-header-flex reveal-on-scroll">
                 <div>
-                    <span class="section-label">OUR ETHOS & PRACTICE</span>
-                    <h2 class="creative-heading">Craft, Context & Spatial Philosophy</h2>
+                    <span class="section-label">EDITORIAL MONOGRAPH</span>
+                    <h2 class="creative-heading">Studio History & Spatial Book</h2>
                 </div>
-                <p class="section-lead-text">Explore the foundational principles that shape our architectural practice and spatial philosophy.</p>
+                <p class="section-lead-text">Flip through our monograph pages to discover our 1995 origins, expansion, mission, and vision.</p>
             </div>
 
-            <div class="materiality-interactive-grid reveal-on-scroll">
-                <div class="material-tabs-col">
-                    <div class="material-tab-item active" onclick="switchEthos(this, 'identity')">
-                        <span class="mat-num">01</span>
-                        <div class="mat-info">
-                            <h3>Architectural Identity</h3>
-                            <span class="mat-tag">Contextual & Enduring Sanctuaries</span>
+            <div class="book-story-container reveal-on-scroll">
+                <!-- 3D Physical Spine Stage -->
+                <div id="book-spine-stage" class="book-spine-stage">
+                    <!-- Left Side: Static Page Image -->
+                    <div class="book-half-page book-left-half">
+                        <img id="book-left-img" src="assets/images/studio_team_drafting.png" alt="Bottega 1995 Origins">
+                        <div class="book-crease-shadow-left"></div>
+                    </div>
+
+                    <!-- Center Spine -->
+                    <div class="book-center-spine"></div>
+
+                    <!-- Right Side: Narrative Text Page Content -->
+                    <div class="book-half-page book-right-half">
+                        <div class="book-crease-shadow-right"></div>
+                        <div id="book-text-wrap" class="book-text-content">
+                            <span id="book-page-year" class="book-year-badge">CHAPTER 01 · 1995</span>
+                            <h3 id="book-page-title" class="book-chapter-title">Where We Started</h3>
+                            <h4 id="book-page-subtitle" class="book-chapter-subtitle">Founded in 1995 as a Vernacular Design & Craft Lab in Calicut</h4>
+                            <p id="book-page-desc" class="book-chapter-desc">Bottega was established in 1995 in Calicut, starting as a close-knit practice of architects, structural thinkers, and master stonemasons dedicated to climate-responsive regional design.</p>
+                            
+                            <div id="book-page-pills" class="book-pills-row">
+                                <span class="book-pill">Established 1995</span>
+                                <span class="book-pill">Calicut Studio</span>
+                                <span class="book-pill">Vernacular Stone</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="material-tab-item" onclick="switchEthos(this, 'vernacular')">
-                        <span class="mat-num">02</span>
-                        <div class="mat-info">
-                            <h3>Vernacular Synthesis</h3>
-                            <span class="mat-tag">Heritage & Modern Engineering</span>
+                    <!-- Dynamic 3D Turning Page Leaf Overlay -->
+                    <!-- Dynamic 3D Turning Page Leaf Overlay with Printed Front & Back Faces -->
+                    <div id="book-turning-leaf" class="book-turning-leaf">
+                        <div class="leaf-face leaf-front">
+                            <div id="leaf-front-content" class="book-text-content">
+                                <span class="book-year-badge">CHAPTER 01 · 1995</span>
+                                <h3 class="book-chapter-title">Where We Started</h3>
+                                <h4 class="book-chapter-subtitle">Founded in 1995 as a Vernacular Design & Craft Lab in Calicut</h4>
+                                <p class="book-chapter-desc">Bottega was established in 1995 in Calicut, starting as a close-knit practice of architects, structural thinkers, and master stonemasons dedicated to climate-responsive regional design.</p>
+                                <div class="book-pills-row">
+                                    <span class="book-pill">Established 1995</span>
+                                    <span class="book-pill">Calicut Studio</span>
+                                    <span class="book-pill">Vernacular Stone</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="material-tab-item" onclick="switchEthos(this, 'ritual')">
-                        <span class="mat-num">03</span>
-                        <div class="mat-info">
-                            <h3>Human Ritual</h3>
-                            <span class="mat-tag">Spatial Poetics & Light</span>
-                        </div>
-                    </div>
-
-                    <div class="material-tab-item" onclick="switchEthos(this, 'microclimate')">
-                        <span class="mat-num">04</span>
-                        <div class="mat-info">
-                            <h3>Passive Microclimate</h3>
-                            <span class="mat-tag">Courtyards & Natural Airflow</span>
+                        <div class="leaf-face leaf-back">
+                            <img id="leaf-back-img" src="assets/images/client_dual_banner.jpg" alt="Leaf Back">
                         </div>
                     </div>
                 </div>
 
-                <div class="material-display-col">
-                    <div id="ethos-card" class="material-card-box">
-                        <img id="ethos-img" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80" alt="Spatial Philosophy">
-                        <div class="material-card-body">
-                            <span id="ethos-badge" class="mat-origin-badge">CORE PRACTICE</span>
-                            <h4 id="ethos-title">Architectural Identity</h4>
-                            <p id="ethos-desc">Creating enduring sanctuaries that belong intimately to their landscape, climate, and local culture—spaces that age gracefully alongside the surrounding terrain.</p>
-                        </div>
+                <!-- Book Navigation Controls BELOW the Book -->
+                <div class="book-nav-bar">
+                    <div class="book-page-indicator">
+                        <span id="book-current-page">FOLIO 01</span> / <span>FOLIO 04</span>
                     </div>
+                    <button class="book-nav-btn" onclick="nextBookPage()" aria-label="Next Page">
+                        <span>NEXT FOLIO</span>
+                        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -232,46 +245,113 @@
     </section>
 
     <!-- =====================================================
-         5. EDITORIAL PRESS & INFINITE SCROLLING MARQUEE
+         5A. AWARDS & HONORS (LEFT HEADER, SPLIT SHOWCASE)
     ====================================================== -->
-    <section class="bottega-press-section">
+    <section class="bottega-awards-section">
         <div class="bottega-container">
-            <span class="section-label reveal-on-scroll">CRITICAL ACCLAIM</span>
-            <div class="press-carousel-wrapper reveal-on-scroll">
-                <blockquote id="press-quote-box" class="press-quote">
-                    "Bottega redefines tropical modernism by pairing raw earthiness with quiet, uncompromising luxury."
-                    <cite id="press-cite">— ARCHITECTURAL DIGEST INDIA</cite>
-                </blockquote>
+            <div class="awards-header-left reveal-on-scroll">
+                <span class="section-label">AWARDS & HONORS</span>
+                <h2 class="creative-heading">National Acclaim</h2>
+            </div>
+            
+            <div class="awards-honor-split-grid reveal-on-scroll">
+                <!-- Left Side: Certificate Image -->
+                <div class="cert-img-col">
+                    <img src="assets/images/emar-cert.png" alt="Emaar India Architecture Contest 3rd Prize Certificate" class="cert-img-showcase">
+                </div>
+
+                <!-- Right Side: Award Details Text -->
+                <div class="cert-text-col">
+                    <span class="cert-badge-clean">NATIONAL ARCHITECTURE AWARD</span>
+                    <h3 class="cert-title-side">Emaar India "Design Your Dream Home"</h3>
+                    <p class="cert-winner-recipient">Awarded to <strong>Donald Nixon</strong> (CEO &amp; Principal Architect, Bottega Studio)</p>
+                    <p class="cert-desc-side">3rd Prize Winner for visionary residential design. Recognized for exceptional spatial planning, sustainable material craftsmanship, and climate-responsive architecture.</p>
+                    <span class="cert-issuer-clean">ISSUED BY EMAAR INDIA · GURUGRAM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         5B. ESTEEMED CLIENTS & DEVELOPERS (BRAND LOGO MARQUEE)
+    ====================================================== -->
+    <section class="bottega-clients-section">
+        <div class="bottega-container">
+            <div class="section-header-center reveal-on-scroll">
+                <span class="section-label">COLLABORATIONS</span>
+                <h2 class="creative-heading">Our Esteemed Clients</h2>
             </div>
         </div>
 
         <div class="press-marquee-container">
             <div class="press-marquee-track">
-                <span>ARCHITECTURAL DIGEST</span>
-                <span class="star">✦</span>
-                <span>DEZEEN</span>
-                <span class="star">✦</span>
-                <span>ARCHDAILY</span>
-                <span class="star">✦</span>
-                <span>ELLE DECOR</span>
-                <span class="star">✦</span>
-                <span>INDIAN ARCHITECT & BUILDER</span>
-                <span class="star">✦</span>
-                <span>VOGUE LIVING</span>
-                <span class="star">✦</span>
+                <!-- HiLITE Group Logo -->
+                <div class="client-logo-item">
+                    <img src="assets/images/hilite-logo.svg" alt="HiLITE Group Logo" class="client-brand-logo">
+                </div>
+                <!-- Emaar Properties Official Logo -->
+                <div class="client-logo-item">
+                    <img src="assets/images/emaar-logo.jpg" alt="Emaar Properties Logo" class="client-brand-logo-img">
+                </div>
+                <!-- Partner Brand Logo -->
+                <div class="client-logo-item">
+                    <img src="assets/images/prismic-logo.webp" alt="Partner Brand Logo" class="client-brand-logo-img">
+                </div>
+                <!-- Sobha Developers Logo -->
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 200 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="20" font-weight="700" letter-spacing="3" fill="#141414">SOBHA</text>
+                    </svg>
+                </div>
+                <!-- DLF Homes Logo -->
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 200 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="22" font-weight="700" letter-spacing="4" fill="#141414">DLF</text>
+                    </svg>
+                </div>
+                <!-- Puravankara Logo -->
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 240 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="18" font-weight="700" letter-spacing="3" fill="#141414">PURAVANKARA</text>
+                    </svg>
+                </div>
+                <!-- Prestige Group Logo -->
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 220 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="19" font-weight="700" letter-spacing="3" fill="#141414">PRESTIGE</text>
+                    </svg>
+                </div>
+
                 <!-- Duplicate for seamless infinite loop -->
-                <span>ARCHITECTURAL DIGEST</span>
-                <span class="star">✦</span>
-                <span>DEZEEN</span>
-                <span class="star">✦</span>
-                <span>ARCHDAILY</span>
-                <span class="star">✦</span>
-                <span>ELLE DECOR</span>
-                <span class="star">✦</span>
-                <span>INDIAN ARCHITECT & BUILDER</span>
-                <span class="star">✦</span>
-                <span>VOGUE LIVING</span>
-                <span class="star">✦</span>
+                <div class="client-logo-item">
+                    <img src="assets/images/hilite-logo.svg" alt="HiLITE Group Logo" class="client-brand-logo">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/images/emaar-logo.jpg" alt="Emaar Properties Logo" class="client-brand-logo-img">
+                </div>
+                <div class="client-logo-item">
+                    <img src="assets/images/prismic-logo.webp" alt="Partner Brand Logo" class="client-brand-logo-img">
+                </div>
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 200 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="20" font-weight="700" letter-spacing="3" fill="#141414">SOBHA</text>
+                    </svg>
+                </div>
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 200 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="22" font-weight="700" letter-spacing="4" fill="#141414">DLF</text>
+                    </svg>
+                </div>
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 240 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="18" font-weight="700" letter-spacing="3" fill="#141414">PURAVANKARA</text>
+                    </svg>
+                </div>
+                <div class="client-logo-item">
+                    <svg class="client-brand-logo-svg" viewBox="0 0 220 40">
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="'Cinzel', 'Playfair Display', serif" font-size="19" font-weight="700" letter-spacing="3" fill="#141414">PRESTIGE</text>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -458,6 +538,16 @@
         </div>
     </section>
 
+    <!-- =====================================================
+         7. CALL TO ACTION BANNER (BEFORE FOOTER)
+    ====================================================== -->
+    <section class="cta-banner-section reveal-on-scroll">
+        <div class="bottega-container">
+            <h2>Ready to bring your architectural vision to life?</h2>
+            <a href="contact.html" class="submit-btn">Start a Project →</a>
+        </div>
+    </section>
+
 </main>
 
 <!-- =====================================================
@@ -530,8 +620,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Typewriter Animation Engine
+let heroTypewriterTimer = null;
+
 function runTypewriter(targetEl, text, speed = 40, callback) {
     if (!targetEl) return;
+    if (heroTypewriterTimer) clearTimeout(heroTypewriterTimer);
+
     let i = 0;
     targetEl.innerHTML = '<span class="tw-text"></span><span class="tw-cursor">|</span>';
     const spanText = targetEl.querySelector('.tw-text');
@@ -540,9 +634,10 @@ function runTypewriter(targetEl, text, speed = 40, callback) {
         if (i < text.length) {
             spanText.textContent += text.charAt(i);
             i++;
-            setTimeout(type, speed);
-        } else if (callback) {
-            callback();
+            heroTypewriterTimer = setTimeout(type, speed);
+        } else {
+            heroTypewriterTimer = null;
+            if (callback) callback();
         }
     }
     type();
@@ -575,63 +670,190 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Hero Atmosphere Simulator
-function setHeroMode(mode, imgUrl) {
-    const heroBg = document.getElementById('hero-bg');
-    const btns = document.querySelectorAll('.atmos-btn');
-    btns.forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+// Auto-Moving Hero Slider Engine with Arrow Controls
+const heroSlides = [
+    {
+        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85",
+        text: "Designed\nAround Place.\nBuilt to Last."
+    },
+    {
+        img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85",
+        text: "Sculpted in Gold.\nWarmed by Dusk.\nSerene Living."
+    },
+    {
+        img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85",
+        text: "Sheltered in Rain.\nRooted in Earth.\nQuiet Sanctuaries."
+    }
+];
 
-    heroBg.style.opacity = '0.4';
-    setTimeout(() => {
-        heroBg.style.backgroundImage = `url('${imgUrl}')`;
-        heroBg.style.opacity = '1';
-    }, 250);
+let currentHeroSlideIdx = 0;
+let heroAutoSlideInterval = null;
+
+function setHeroSlide(idx) {
+    currentHeroSlideIdx = (idx + heroSlides.length) % heroSlides.length;
+    const slide = heroSlides[currentHeroSlideIdx];
+
+    const heroBg = document.getElementById('hero-bg');
+    const heroTitle = document.getElementById('hero-typewriter');
+    const slideCounter = document.getElementById('hero-current-slide');
+
+    if (slideCounter) {
+        slideCounter.textContent = String(currentHeroSlideIdx + 1).padStart(2, '0');
+    }
+
+    if (heroBg) {
+        heroBg.style.opacity = '0.35';
+        setTimeout(() => {
+            heroBg.style.backgroundImage = `url('${slide.img}')`;
+            heroBg.style.opacity = '1';
+        }, 220);
+    }
+
+    if (heroTitle && slide.text) {
+        runTypewriter(heroTitle, slide.text, 40);
+    }
 }
 
-// Spatial Philosophy Switcher
-const ethosData = {
-    identity: {
-        title: "Architectural Identity",
-        badge: "CORE PRACTICE",
-        desc: "Creating enduring sanctuaries that belong intimately to their landscape, climate, and local culture—spaces that age gracefully alongside the surrounding terrain.",
-        img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80"
+function navigateHeroSlide(direction) {
+    resetHeroAutoSlide();
+    setHeroSlide(currentHeroSlideIdx + direction);
+}
+
+function startHeroAutoSlide() {
+    if (heroAutoSlideInterval) clearInterval(heroAutoSlideInterval);
+    heroAutoSlideInterval = setInterval(() => {
+        setHeroSlide(currentHeroSlideIdx + 1);
+    }, 5500);
+}
+
+function resetHeroAutoSlide() {
+    startHeroAutoSlide();
+}
+
+// Initial Kickoff for Hero Slider
+document.addEventListener('DOMContentLoaded', () => {
+    setHeroSlide(0);
+    startHeroAutoSlide();
+});
+
+// 3D Book Page Flip Engine
+const bookPages = [
+    {
+        year: "CHAPTER 01 · 1995",
+        title: "Where We Started",
+        subtitle: "Founded in 1995 as a Vernacular Design & Craft Lab in Calicut",
+        desc: "Bottega was established in 1995 in Calicut, starting as a close-knit practice of architects, structural thinkers, and master stonemasons dedicated to climate-responsive regional design.",
+        img: "assets/images/studio_team_drafting.png",
+        pills: ["Established 1995", "Calicut Studio", "Vernacular Stone"]
     },
-    vernacular: {
-        title: "Vernacular Synthesis",
-        badge: "DESIGN PRACTICE",
-        desc: "Bridging traditional South Indian building techniques, master stonemasons, and wood craftsmen with contemporary spatial engineering under a single unified practice.",
-        img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+    {
+        year: "CHAPTER 02 · 2008",
+        title: "As We Grew",
+        subtitle: "Expanding Studios Across Kerala & Karnataka",
+        desc: "Over the next decade, Bottega grew into an integrated multi-disciplinary studio—opening our Bangalore branch and uniting traditional South Indian artisan woodcraft with contemporary spatial engineering.",
+        img: "assets/images/client_dual_banner.jpg",
+        pills: ["Bangalore Studio", "Artisan Synergy", "Structural Innovation"]
     },
-    ritual: {
-        title: "Human Ritual",
-        badge: "SPATIAL POETICS",
-        desc: "Designing home environments around the natural cadence of family life, daylight geometry, and natural breezes across shaded inner courtyards.",
-        img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80"
+    {
+        year: "CHAPTER 03 · OUR MISSION",
+        title: "Our Mission",
+        subtitle: "Honoring Heritage, Stonemasonry & Precision Engineering",
+        desc: "Our mission is to preserve South Indian architectural heritage by directly collaborating with master stonemasons and woodcraft artisans—crafting climate-responsive spaces that age gracefully with time.",
+        img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85",
+        pills: ["Heritage Preservation", "Honest Materials", "Sustainable Craft"]
     },
-    microclimate: {
-        title: "Passive Microclimate",
-        badge: "ECOLOGICAL HARMONY",
-        desc: "Utilizing thermal stone mass, rainwater reflecting pools, and stack-ventilation courtyards to maintain cool interior sanctuaries without total energy reliance.",
-        img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80"
+    {
+        year: "CHAPTER 04 · OUR VISION",
+        title: "What We Are & Our Vision",
+        subtitle: "Pioneering Zero-Carbon Microclimate Sanctuaries",
+        desc: "Today, Bottega stands as a premier architectural practice across South India. Our vision is to pioneer zero-carbon master plans where architecture, landscape, and human ritual exist in perpetual harmony.",
+        img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85",
+        pills: ["120+ Realized Projects", "Passive Microclimate", "Zero-Carbon Vision"]
     }
-};
+];
 
-function switchEthos(el, key) {
-    document.querySelectorAll('.material-tab-item').forEach(i => i.classList.remove('active'));
-    el.classList.add('active');
+let currentBookPageIdx = 0;
+let isBookFlipping = false;
 
-    const data = ethosData[key];
-    const card = document.getElementById('ethos-card');
-    card.style.opacity = '0.3';
+function setBookPage(pageIdx, direction = 1) {
+    if (isBookFlipping) return;
 
+    const prevIdx = currentBookPageIdx;
+    const nextIdx = (pageIdx + bookPages.length) % bookPages.length;
+    if (nextIdx === prevIdx) return;
+
+    isBookFlipping = true;
+    currentBookPageIdx = nextIdx;
+
+    const prevData = bookPages[prevIdx];
+    const nextData = bookPages[nextIdx];
+
+    const leftImg = document.getElementById('book-left-img');
+    const pageCounter = document.getElementById('book-current-page');
+    const leaf = document.getElementById('book-turning-leaf');
+    const leafFrontContent = document.getElementById('leaf-front-content');
+    const leafBackImg = document.getElementById('leaf-back-img');
+
+    if (pageCounter) {
+        pageCounter.textContent = `FOLIO ${String(nextIdx + 1).padStart(2, '0')}`;
+    }
+
+    // 1. Print Previous Chapter Text onto turning leaf front (lifting off right side)
+    if (leafFrontContent) {
+        leafFrontContent.innerHTML = `
+            <span class="book-year-badge">${prevData.year}</span>
+            <h3 class="book-chapter-title">${prevData.title}</h3>
+            <h4 class="book-chapter-subtitle">${prevData.subtitle}</h4>
+            <p class="book-chapter-desc">${prevData.desc}</p>
+            <div class="book-pills-row">
+                ${(prevData.pills || []).map(p => `<span class="book-pill">${p}</span>`).join('')}
+            </div>
+        `;
+    }
+
+    // 2. Put Next Chapter Image onto turning leaf back (flipping onto left side)
+    if (leafBackImg) {
+        leafBackImg.src = nextData.img;
+    }
+
+    // 3. Immediately reveal Next Chapter Text on static Right Page underneath lifting sheet
+    document.getElementById('book-page-year').textContent = nextData.year;
+    document.getElementById('book-page-title').textContent = nextData.title;
+    document.getElementById('book-page-subtitle').textContent = nextData.subtitle;
+    document.getElementById('book-page-desc').textContent = nextData.desc;
+    const pillsRow = document.getElementById('book-page-pills');
+    if (pillsRow && nextData.pills) {
+        pillsRow.innerHTML = nextData.pills.map(p => `<span class="book-pill">${p}</span>`).join('');
+    }
+
+    // 4. Start smooth, slow 3D page flip (0.9s)
+    if (leaf) {
+        leaf.style.transition = 'transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1.000)';
+        leaf.className = `book-turning-leaf ${direction > 0 ? 'turn-next' : 'turn-prev'}`;
+    }
+
+    // 5. As turning sheet completes landing on left side (860ms), update static Left Page photo underneath
     setTimeout(() => {
-        document.getElementById('ethos-img').src = data.img;
-        document.getElementById('ethos-title').textContent = data.title;
-        document.getElementById('ethos-badge').textContent = data.badge;
-        document.getElementById('ethos-desc').textContent = data.desc;
-        card.style.opacity = '1';
-    }, 200);
+        if (leftImg) leftImg.src = nextData.img;
+    }, 860);
+
+    // 6. Reset turning leaf silently at 920ms without any pop
+    setTimeout(() => {
+        if (leaf) {
+            leaf.style.transition = 'none';
+            leaf.className = 'book-turning-leaf';
+            void leaf.offsetWidth; // Force reflow
+        }
+        isBookFlipping = false;
+    }, 920);
+}
+
+function nextBookPage() {
+    setBookPage(currentBookPageIdx + 1, 1);
+}
+
+function prevBookPage() {
+    setBookPage(currentBookPageIdx - 1, -1);
 }
 
 // Camera Reload Engine with Strict Inertia Lock
@@ -738,5 +960,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<script src="assets/js/mobile-menu.js"></script>
 </body>
 </html>

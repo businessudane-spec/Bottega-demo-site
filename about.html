@@ -18,11 +18,18 @@
 ====================================================== -->
 <header class="site-header site-header-dark">
     <div class="header-inner">
-                <div id="site-brand-logo" class="site-brand">
+        <div id="site-brand-logo" class="site-brand">
             <a href="index.html" class="brand-link">
                 <img src="assets/images/bottega_white_logo.png" alt="Bottega Design Studio" class="site-header-logo-img">
             </a>
         </div>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
 
         <nav class="main-nav">
             <ul class="main-menu">
@@ -93,51 +100,127 @@
     <!-- STUDIO SINGLE ORIGINAL FULL WIDTH GROUP PHOTO WITH REVEAL & HOTSPOTS -->
     <section class="about-photo-section-full reveal-curtain-wrap">
         <div class="group-photo-interactive-wrap full-width-wrap">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2400&q=90" alt="Bottega Calicut & Bangalore Collaborative Teams" class="group-team-photo">
+            <img src="assets/images/team_group_photo.jpg" alt="Bottega Design Studio Leadership & Collaborative Teams" class="group-team-photo">
             
-            <!-- Interactive Person Hotspot 1 (Rahul Varma) -->
-            <div class="person-hotspot" style="top: 48%; left: 18%;">
-                <div class="hotspot-pulse"></div>
-                <div class="person-profile-popup">
-                    <span class="popup-studio-tag">CALICUT STUDIO</span>
+            <!-- Interactive Person Hotspot 1 (Rahul Varma - Far Left) -->
+            <div class="person-hotspot" style="top: 30%; left: 14%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
+                <div class="person-profile-popup popup-align-left">
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>CALICUT STUDIO</span>
+                        <span class="popup-id">01</span>
+                    </div>
                     <h4 class="person-name">Ar. Rahul Varma</h4>
                     <span class="person-designation">Principal Architect & Founder</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">15+ Yrs Exp</span>
+                        <span class="meta-pill">Contextual Design</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Interactive Person Hotspot 2 (Ananya Nair) -->
-            <div class="person-hotspot" style="top: 42%; left: 38%;">
-                <div class="hotspot-pulse"></div>
+            <!-- Interactive Person Hotspot 2 (Karan Sharma - 2nd Left) -->
+            <div class="person-hotspot" style="top: 24%; left: 32%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
+                <div class="person-profile-popup popup-flip-down">
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>BANGALORE STUDIO</span>
+                        <span class="popup-id">02</span>
+                    </div>
+                    <h4 class="person-name">Karan Sharma</h4>
+                    <span class="person-designation">Lead Structural Engineer</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">High-Rise Steel</span>
+                        <span class="meta-pill">Seismic Engineering</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Person Hotspot 3 (Ananya Nair - 3rd Left) -->
+            <div class="person-hotspot" style="top: 28%; left: 45%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
                 <div class="person-profile-popup">
-                    <span class="popup-studio-tag">BANGALORE STUDIO</span>
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>CALICUT STUDIO</span>
+                        <span class="popup-id">03</span>
+                    </div>
                     <h4 class="person-name">Ananya Nair</h4>
                     <span class="person-designation">Director of Interior Architecture</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">Tactile Interiors</span>
+                        <span class="meta-pill">Teak Woodcraft</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Interactive Person Hotspot 3 (Siddharth Menon) -->
-            <div class="person-hotspot" style="top: 45%; left: 62%;">
-                <div class="hotspot-pulse"></div>
-                <div class="person-profile-popup">
-                    <span class="popup-studio-tag">CALICUT STUDIO</span>
+            <!-- Interactive Person Hotspot 4 (Siddharth Menon - Top Center) -->
+            <div class="person-hotspot" style="top: 18%; left: 56%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
+                <div class="person-profile-popup popup-flip-down">
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>BANGALORE STUDIO</span>
+                        <span class="popup-id">04</span>
+                    </div>
                     <h4 class="person-name">Siddharth Menon</h4>
                     <span class="person-designation">Head of Urban Master Planning</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">Eco-Resorts</span>
+                        <span class="meta-pill">Passive Microclimate</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Interactive Person Hotspot 4 (Meera Krishna) -->
-            <div class="person-hotspot" style="top: 50%; left: 82%;">
-                <div class="hotspot-pulse"></div>
+            <!-- Interactive Person Hotspot 5 (Priya Ramesh - Front Center) -->
+            <div class="person-hotspot" style="top: 38%; left: 60%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
                 <div class="person-profile-popup">
-                    <span class="popup-studio-tag">BANGALORE STUDIO</span>
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>CALICUT STUDIO</span>
+                        <span class="popup-id">05</span>
+                    </div>
+                    <h4 class="person-name">Priya Ramesh</h4>
+                    <span class="person-designation">Design Director & Partner</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">Courtyard Villas</span>
+                        <span class="meta-pill">Luxury Sanctuaries</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Person Hotspot 6 (Meera Krishna - 6th Left) -->
+            <div class="person-hotspot" style="top: 26%; left: 68%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
+                <div class="person-profile-popup popup-flip-down">
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>BANGALORE STUDIO</span>
+                        <span class="popup-id">06</span>
+                    </div>
                     <h4 class="person-name">Meera Krishna</h4>
                     <span class="person-designation">Senior Landscape Architect</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">Native Flora</span>
+                        <span class="meta-pill">Water Terraces</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="full-photo-overlay-bar">
-                <span class="photo-caption-light">Bottega Design Studio — Calicut & Bangalore Collaborative Teams (Hover over team pins to inspect profiles)</span>
+            <!-- Interactive Person Hotspot 7 (Kavya Sundaram - Far Right) -->
+            <div class="person-hotspot" style="top: 22%; left: 82%;">
+                <div class="hotspot-pulse"><span class="pulse-icon">✦</span></div>
+                <div class="person-profile-popup popup-flip-down popup-align-right">
+                    <div class="popup-header-row">
+                        <span class="popup-studio-tag"><span class="tag-dot"></span>CALICUT STUDIO</span>
+                        <span class="popup-id">07</span>
+                    </div>
+                    <h4 class="person-name">Kavya Sundaram</h4>
+                    <span class="person-designation">Sustainable Materials Specialist</span>
+                    <div class="popup-meta-pills">
+                        <span class="meta-pill">Laterite Masonry</span>
+                        <span class="meta-pill">Zero-Waste Craft</span>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -269,5 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="assets/js/mobile-menu.js"></script>
 </body>
 </html>

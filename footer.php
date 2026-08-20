@@ -10,6 +10,7 @@
 </footer>
 
 <script src="<?php echo get_stylesheet_directory_uri ? get_stylesheet_directory_uri() . '/assets/js/scroll-animation.js' : 'assets/js/scroll-animation.js'; ?>"></script>
+<script src="<?php echo get_stylesheet_directory_uri ? get_stylesheet_directory_uri() . '/assets/js/mobile-menu.js' : 'assets/js/mobile-menu.js'; ?>"></script>
 
 <?php if (function_exists('wp_footer')) wp_footer(); ?>
 </body>

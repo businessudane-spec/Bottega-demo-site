@@ -26,6 +26,13 @@
             </a>
         </div>
 
+        <!-- Mobile Hamburger Toggle Button -->
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
         <!-- Navigation -->
         <nav class="main-nav">
             <ul class="main-menu">
